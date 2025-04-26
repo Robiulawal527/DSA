@@ -1,13 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h> // For malloc and free
-
-struct Node {
+#include <stdlib.h> 
+struct Node  {
     int data;
-    struct Node *next;
+    struct  Node *next;
 };
 typedef struct Node node;
 
-void menu();
+void menu();  
+
 node* insert_head(node *head, int v);
 void printList(node *head);
 node* insert_tail(node *head, int v);
@@ -27,26 +27,26 @@ int main() {
         scanf("%d", &ch);
 
         if (ch == 1) {
-            printf("Enter data: ");
+            printf("Enter  data: ");
             scanf("%d", &v);
             head = insert_head(head, v);
         } else if (ch == 2) {
-            printf("Enter data: ");
+            printf("Enter  data: ");
             scanf("%d", &v);
             head = insert_tail(head, v);
         } else if (ch == 3) {
-            printf("Enter position: ");
+            printf("Enter  position: ");
             scanf("%d", &pos);
             if (pos >= 1 && pos <= getListSize(head) + 1) {
-                printf("Enter data: ");
+                printf("Enter  data: ");
                 scanf("%d", &v);
                 head = insert_nth(head, v, pos);
             } else {
-                printf("Invalid position.\n\n");
+                printf("Invalid  position.\n\n");
             }
         } else if (ch == 4) {
             if (head == NULL) {
-                printf("List is empty. Nothing to delete.\n\n");
+                printf("List is empty. Nothing  to delete.\n\n");
             } else {
                 printf("%d deleted.\n\n", head->data);
                 head = delete_head(head);
@@ -99,10 +99,10 @@ void menu() {
 }
 
 node* createNode(int v) {
-    node *nn = (node*)malloc(sizeof(node)); // Use malloc for memory allocation
+    node *nn =  (node*)malloc(sizeof(node)); 
     nn->data = v;
-    nn->next = NULL;
-    return nn;
+    nn->next =  NULL;
+    return  nn;
 }
 
 node* insert_head(node *head, int v) {
@@ -164,23 +164,23 @@ node* insert_nth(node *head, int v, int n) {
 node* delete_head(node *head) {
     if (head == NULL) return NULL;
     node *del = head;
-    head = head->next;
-    free(del); // Use free for memory deallocation
+    head =  head->next;
+    free(del); 
     return head;
 }
 
-node* delete_tail(node *head) {
+node*  delete_tail(node *head) {
     if (head == NULL) return NULL;
     if (getListSize(head) == 1) {
-        return delete_head(head);
+        return  delete_head(head);
     }
     node *temp = head;
     while (temp->next->next != NULL) {
-        temp = temp->next;
+        temp =  temp->next;
     }
-    free(temp->next); // Use free for memory deallocation
+    free(temp->next); 
     temp->next = NULL;
-    return head;
+    return  head;
 }
 
 node* delete_nth(node *head, int n) {
@@ -195,7 +195,7 @@ node* delete_nth(node *head, int n) {
         }
         node *del = temp->next;
         temp->next = del->next;
-        free(del); // Use free for memory deallocation
+        free(del); 
         return head;
     }
 }
@@ -203,41 +203,41 @@ node* delete_nth(node *head, int n) {
 node* customOrder(node *head) {
     if (head == NULL) return NULL;
 
-    int freq[101] = {0};           // Step 1: Frequency array
-    int unique[1000], uCount = 0;  // Step 2: To store unique values
+    int freq[101] = {0};          
+    int uniq[1000], uCount = 0;  
     int isSeen[101] = {0};
 
     node *temp = head;
 
-    // Count frequencies and store unique values
+   
     while (temp != NULL) {
         int val = temp->data;
         freq[val]++;
 
         if (!isSeen[val]) {
-            unique[uCount++] = val;
+            uniq[uCount++] = val;
             isSeen[val] = 1;
         }
         temp = temp->next;
     }
 
-    // Step 3: Sort unique[] based on frequency (descending)
+ 
     for (int i = 0; i < uCount - 1; i++) {
         for (int j = i + 1; j < uCount; j++) {
-            if (freq[unique[i]] < freq[unique[j]]) {
-                int tempVal = unique[i];
-                unique[i] = unique[j];
-                unique[j] = tempVal;
+            if (freq[uniq[i]] < freq[uniq[j]]) {
+                int tempVal = uniq[i];
+                uniq[i] = uniq[j];
+                uniq[j] =  tempVal;
             }
         }
     }
 
-    // Step 4: Build new list
+  
     node *newHead = NULL;
     for (int i = 0; i < uCount; i++) {
-        int value = unique[i];
+        int value = uniq[i];
         for (int j = 0; j < freq[value]; j++) {
-            newHead = insert_tail(newHead, value);
+            newHead =  insert_tail(newHead, value);
         }
     }
 
