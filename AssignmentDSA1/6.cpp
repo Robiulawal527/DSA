@@ -165,14 +165,14 @@ node* insert_head(node *head, int v)
 
 void printList(node *head)
 {
-    node *temp;
+    node *tmp;
 
-    temp = head;
+    tmp = head;
 
-    while(temp != NULL)
+    while(tmp != NULL)
     {
-        printf("%d ",temp->data);
-        temp = temp->next;
+        printf("%d ",tmp->data);
+        tmp = tmp->next;
     }
     printf("\n\n");
 
@@ -180,15 +180,15 @@ void printList(node *head)
 
 int getListSize(node *head)
 {
-    node *temp;
+    node *tmp;
     int lSize = 0;
 
-    temp = head;
+    tmp = head;
 
-    while(temp != NULL)
+    while(tmp != NULL)
     {
         lSize++;
-        temp = temp->next;
+        tmp = tmp->next;
     }
     return lSize;
 
@@ -196,8 +196,8 @@ int getListSize(node *head)
 
 node* insert_tail(node *head, int v)
 {
-    node *temp = head;
-    if(temp == NULL)
+    node *tmp = head;
+    if(tmp == NULL)
     {
         head = insert_head(head, v);
     }
@@ -206,12 +206,12 @@ node* insert_tail(node *head, int v)
         node *nn;
         nn = createNode(v);
 
-        while(temp->next != NULL)
+        while(tmp->next != NULL)
         {
-            temp = temp->next;
+            tmp = tmp->next;
         }
 
-        temp->next = nn;
+        tmp->next = nn;
     }
 
     return head;
@@ -219,7 +219,7 @@ node* insert_tail(node *head, int v)
 
 node* insert_nth(node *head, int v, int n)
 {
-    node *temp = head;
+    node *tmp = head;
     int i;
 
     if(n == 1)
@@ -237,11 +237,11 @@ node* insert_nth(node *head, int v, int n)
 
         for(i = 1; i <= n-2; i++)
         {
-            temp = temp->next;
+            tmp = tmp->next;
         }
 
-        nn->next = temp->next;
-        temp->next = nn;
+        nn->next = tmp->next;
+        tmp->next = nn;
     }
     return head;
 }
@@ -257,8 +257,8 @@ node* delete_head(node *head)
 
 node* delete_tail(node *head)
 {
-    node *temp;
-    temp = head;
+    node *tmp;
+    tmp = head;
 
     if(getListSize(head)==1)
     {
@@ -266,12 +266,12 @@ node* delete_tail(node *head)
     }
     else
     {
-        while(temp->next->next != NULL)
+        while(tmp->next->next != NULL)
         {
-            temp = temp->next;
+            tmp = tmp->next;
         }
-        delete(temp->next);
-        temp->next = NULL;
+        delete(tmp->next);
+        tmp->next = NULL;
     }
     return head;
 }
@@ -288,18 +288,18 @@ node* delete_nth(node *head, int n)
     }
     else
     {
-        node *temp, *del;
+        node *tmp, *del;
         int i;
 
-        temp = head;
+        tmp = head;
 
         for(i = 1; i<= n-2; i++)
         {
-            temp = temp->next;
+            tmp = tmp->next;
         }
-        del = temp->next;
+        del = tmp->next;
 
-        temp->next = del->next;
+        tmp->next = del->next;
         delete(del);
 
 
@@ -309,27 +309,27 @@ node* delete_nth(node *head, int n)
 
 node* delete_first_occurrence(node *head, int val)
 {
-    node *temp = head, *prev = NULL;
+    node *tmp = head, *prev = NULL;
 
-    while (temp != NULL)
+    while (tmp != NULL)
     {
-        if (temp->data == val)
+        if (tmp->data == val)
         {
             if (prev == NULL)
             {
                 // First node
                 head = head->next;
-                delete(temp);
+                delete(tmp);
             }
             else
             {
-                prev->next = temp->next;
-                delete(temp);
+                prev->next = tmp->next;
+                delete(tmp);
             }
             return head;
         }
-        prev = temp;
-        temp = temp->next;
+        prev = tmp;
+        tmp = tmp->next;
     }
     return head;
 }

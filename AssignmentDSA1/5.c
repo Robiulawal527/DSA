@@ -7,12 +7,12 @@ double cubeRoot(int n)
 
     while ((high - low) > 0.005)
     {
-        mid = (low + high) / 2.0;
+        mid = ( low + high) / 2.0;
 
         if (mid * mid * mid > n)
-            high = mid;
+            high =  mid;
         else
-            low = mid;
+            low =  mid;
     }
 
     return (low + high) / 2.0;
@@ -20,12 +20,15 @@ double cubeRoot(int n)
 
 int main()
 {
+
+
     int N;
-    printf("Enter N: ");
+    
+    printf("Enter  N: ");
     scanf("%d", &N);
 
     double result = cubeRoot(N);
-    printf("Cubic root of %d is %.3lf\n", N, result);
+    printf("Cubic  root of %d is %.3lf\n", N, result);
 
     return 0;
 }

@@ -312,8 +312,8 @@ node* delete_nth(node *head, int n)
 
 node* seperateOddEven(node *head, int direction)
 {
-    node *oddHead = NULL, *oddTail = NULL;
-    node *evenHead = NULL, *evenTail = NULL;
+    node *evenHead = NULL, *oddT = NULL;
+    node *evenH = NULL, *mostFreqail = NULL;
     node *temp = head;
 
     while (temp != NULL)
@@ -322,45 +322,45 @@ node* seperateOddEven(node *head, int direction)
 
         if (temp->data % 2 == 0)  // even
         {
-            if (evenHead == NULL)
+            if (evenH == NULL)
             {
-                evenHead = evenTail = nn;
+                evenH = mostFreqail = nn;
             }
             else
             {
-                evenTail->next = nn;
-                evenTail = nn;
+                mostFreqail->next = nn;
+                mostFreqail = nn;
             }
         }
         else  // odd
         {
-            if (oddHead == NULL)
+            if (evenHead == NULL)
             {
-                oddHead = oddTail = nn;
+                evenHead = oddT = nn;
             }
             else
             {
-                oddTail->next = nn;
-                oddTail = nn;
+                oddT->next = nn;
+                oddT = nn;
             }
         }
 
         temp = temp->next;
     }
 
-    // Combine based on direction
-    if (direction == 1) // odd first
+   
+    if (direction == 1) 
     {
-        if (oddTail != NULL)
-            oddTail->next = evenHead;
-        return (oddHead != NULL) ? oddHead : evenHead;
+        if (oddT != NULL)
+            oddT->next = evenH;
+        return (evenHead != NULL) ? evenHead : evenH;
     }
-    else if (direction == 2) // even first
+    else if (direction == 2) 
     {
-        if (evenTail != NULL)
-            evenTail->next = oddHead;
-        return (evenHead != NULL) ? evenHead : oddHead;
+        if (mostFreqail != NULL)
+            mostFreqail->next = evenHead;
+        return (evenH != NULL) ? evenH : evenHead;
     }
 
-    return head; // default: no change
+    return head; 
 }

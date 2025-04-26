@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <time.h>
 
-void mostFrequent(int arr[], int n)
+void mostFreq(int arr[], int n)
 {
-    int freq[101] = {0};  // Values range from 1 to 100
+    int freq[101] = {0};  
 
-    // Count frequency
+
     for (int i = 0; i < n; i++)
     {
         freq[arr[i]]++;
     }
 
-    // Find max frequency
+
     int maxFreq = 0;
     for (int i = 1; i <= 100; i++)
     {
@@ -20,7 +20,7 @@ void mostFrequent(int arr[], int n)
             maxFreq = freq[i];
     }
 
-    // Print all values with max frequency
+
     printf("\nMost frequent value(s): ");
     for (int i = 1; i <= 100; i++)
     {
@@ -44,12 +44,12 @@ int main()
     printf("Random values: ");
     for (int i = 0; i < N; i++)
     {
-        arr[i] = (rand() % 100) + 1;
+        arr[i] = (rand()  % 100) + 1;
         printf("%d ", arr[i]);
     }
-    printf("\n");
+    printf(" \n");
 
-    mostFrequent(arr, N);
+    mostFreq(arr, N);
 
     return 0;
 }
