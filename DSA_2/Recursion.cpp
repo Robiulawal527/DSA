@@ -7,7 +7,11 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    printf("Hello world");
+    int n; 
+
+    cin >> n; 
+
+    cout << n; 
     
     return 0;
 }
