@@ -6,6 +6,23 @@ using namespace std;
 
 typedef long long ll;
 
+
+int recursiveCall(int arr[], int n){
+
+    
+    int i = 0; 
+
+    cout << arr[i]; 
+
+    i++; 
+
+    if(int i = n) return 1;
+    else recursiveCall(arr,n); 
+
+    return 0; 
+
+}
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -30,12 +47,11 @@ int main() {
 
     // printing the array in one line
 
-    for(int i=0; i<n; i++) cout << arr[i] <<" ";
+    //for(int i=0; i<n; i++) cout << arr[i] <<" ";
 
+    //printint the array using recursion
 
-
-
-
+    recursiveCall(arr, n);
 
     
     
