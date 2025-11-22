@@ -9,9 +9,7 @@ typedef long long ll;
 
 int recursiveCall(int arr[], int n){
 
-    
-    int i = 0; 
-
+    int  i = 0;
     cout << arr[i]; 
 
     i++; 
