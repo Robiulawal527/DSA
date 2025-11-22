@@ -11,7 +11,10 @@ int main() {
 
     cin >> n; 
 
-    cout << n; 
+    cout << "You have entered : " <<  n << endl; 
+
+
+    
     
     return 0;
 }
