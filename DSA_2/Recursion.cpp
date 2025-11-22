@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+#include <stdlib.h>
+
+
 typedef long long ll;
 
 int main() {
@@ -13,11 +16,16 @@ int main() {
 
     int arr[n];
 
-    
+    srand(time(NULL));
 
     for(int i=0; i<n; i++){
-        arr[i] = 
+        int x = rand() % 100;
+        arr[i] = x;
     }
+
+    for(int i=0; i<n; i++) cout << arr[i] <<" ";
+
+
 
 
 
