@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-typedef long long ll;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -12,6 +11,21 @@ int main() {
     cin >> s;
     
     cout << s << "\n"; 
+
+
+    stack<char> st; 
+
+    for(char c: s) st.push(c);
+
+    string reverseStack = " "; 
+
+    while (!st.empty()){
+        reverseStack += st.top();
+        st.pop();
+    }
+
+    cout << reverseStack; 
+
     
     return 0;
 }
