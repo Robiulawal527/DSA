@@ -19,9 +19,7 @@ int main() {
     string rev; 
 
     int len = word.length();
-
-    int 
-
+    
     while (!st.empty()) {
         cout << st.top();
         st.pop();
