@@ -6,26 +6,26 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    cout << "Enter a string: ";
-    string s;
-    cin >> s;
-    
-    cout << s << "\n"; 
+    string word; 
 
+    cout <<"Enter a string: ";
+    cin >> word; 
+    //cout << "You have entered: " << word << endl; 
 
     stack<char> st; 
 
-    for(char c: s) st.push(c);
+    for(char c: word) st.push(c); 
 
-    string reverseStack = " "; 
+    string rev; 
 
-    while (!st.empty()){
-        reverseStack += st.top();
+    int len = word.length();
+
+    int 
+
+    while (!st.empty()) {
+        cout << st.top();
         st.pop();
     }
-
-    cout << reverseStack; 
-
     
     return 0;
 }
