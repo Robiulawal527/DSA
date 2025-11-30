@@ -16,9 +16,7 @@ int main() {
 
     for(char c: word) st.push(c); 
 
-    string rev; 
-
-    int len = word.length();
+    //string rev; 
 
     while (!st.empty()) {
         cout << st.top();
