@@ -9,6 +9,7 @@ int main() {
     v.push_back(20);
     v.push_back(30);
 
+    
     cout << "size=" << v.size() << ", cap=" << v.capacity() << "\n";
     for (int x : v) cout << x << ' ';  // 10 20 30
     cout << "\n";
