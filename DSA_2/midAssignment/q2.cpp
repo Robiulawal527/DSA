@@ -9,23 +9,27 @@ int main() {
     int n, m;
         cin >> n >> m;
         
-        vector<int> a(n);
+        vector<int> arr(n);
         for (int i = 0; i < n; i++) {
-            cin >> a[i];
+
+            cin >> arr[i];
+
         }
+
+        // sorting to find minimum best
         
-        sort(a.begin(), a.end());
+        sort(arr.begin(), arr.end());
         
-        int best = INT_MAX;
+        int bestMinimum = INT_MAX;
         
         for (int i = 0; i <= n - m; i++) {
-            int diff = a[i + m - 1] - a[i];
-            if (diff < best) {
-                best = diff;
+            int difference = arr[i + m - 1] - arr[i];
+            if (difference < bestMinimum) {
+                bestMinimum = difference;
             }
         }
         
-        cout << best << endl;
+        cout << bestMinimum << endl;
     
     return 0;
 }
