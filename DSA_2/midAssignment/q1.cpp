@@ -48,7 +48,7 @@ int main() {
 
     cout << " " << endl; 
 
-
+    //printing maximum product
     cout << "Maximum Product: " << maxProductKadane(arr) << endl;
 
 
