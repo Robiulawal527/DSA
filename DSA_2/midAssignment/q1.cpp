@@ -7,7 +7,6 @@ using namespace std;
 int maxProductKadane(const vector<long long>& arr) {
     int n = arr.size();
     if (n == 0) return 0;
-
     int global_max = arr[0];
     int curr_max = arr[0];
     int curr_min = arr[0];
