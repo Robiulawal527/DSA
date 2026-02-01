@@ -1,26 +1,5 @@
-/*
- * GREEDY ALGORITHM - FRACTIONAL KNAPSACK PROBLEM
- * 
- * PROBLEM:
- * Given a knapsack of capacity W and N items with their weights and values,
- * maximize the total value we can carry (we can take fractions of items).
- * 
- * DIFFERENCE FROM ACTIVITY SELECTION:
- * - Activity Selection: Choose NON-OVERLAPPING activities (binary choice: pick or skip)
- * - Fractional Knapsack: Choose items to maximize VALUE (can take partial items)
- * 
- * GREEDY STRATEGY:
- * 1. Calculate value-to-weight ratio (value/weight) for each item
- * 2. Sort items in descending order of this ratio
- * 3. Greedily pick items with highest value/weight ratio first
- * 4. When capacity runs out, take fraction of next best item
- * 
- * WHY THIS WORKS:
- * - By picking items with highest "bang for buck" (value/weight), we maximize value
- * - Taking the most efficient items first ensures optimal packing
- * 
- * NOTE: This greedy approach does NOT work for 0/1 Knapsack (use DP for that)
- */
+// FRACTIONAL KNAPSACK PROBLEM
+// Greedy Strategy: Sort by value/weight ratio, pick highest ratio items first
 
 #include <iostream>
 #include <vector>
