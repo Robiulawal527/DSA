@@ -7,24 +7,21 @@
 #include <iomanip>
 using namespace std;
 
-// Structure to represent an item
 struct Item {
     int id;
     double weight;
     double value;
-    double ratio;  // value/weight ratio
+    double ratio;
     
     Item(int i, double w, double v) : id(i), weight(w), value(v) {
         ratio = value / weight;
     }
 };
 
-// Comparator to sort by value/weight ratio in descending order
 bool compareByRatio(const Item &a, const Item &b) {
     return a.ratio > b.ratio;
 }
 
-// Function to display item details
 void displayItems(const vector<Item> &items, const string &title) {
     cout << "\n" << title << "\n";
     cout << "Item\tWeight\tValue\tValue/Weight Ratio\n";
@@ -35,15 +32,13 @@ void displayItems(const vector<Item> &items, const string &title) {
     }
 }
 
-// GREEDY ALGORITHM: Fractional Knapsack
 struct KnapsackResult {
     double maxValue;
-    vector<pair<int, double>> selectedItems;  // (item_id, fraction_taken)
+    vector<pair<int, double>> selectedItems;
     double totalWeight;
 };
 
 KnapsackResult fractionalKnapsack(vector<Item> items, double capacity) {
-    // Step 1: Sort items by value/weight ratio in descending order (GREEDY CHOICE)
     sort(items.begin(), items.end(), compareByRatio);
     
     KnapsackResult result;
@@ -55,12 +50,10 @@ KnapsackResult fractionalKnapsack(vector<Item> items, double capacity) {
     
     double remainingCapacity = capacity;
     
-    // Step 2: Greedily pick items with highest ratio
     for (const auto &item : items) {
         if (remainingCapacity <= 0) break;
         
         if (item.weight <= remainingCapacity) {
-            // We can fit the entire item
             result.maxValue += item.value;
             result.totalWeight += item.weight;
             remainingCapacity -= item.weight;
@@ -71,7 +64,6 @@ KnapsackResult fractionalKnapsack(vector<Item> items, double capacity) {
                  << ", Ratio: " << fixed << setprecision(2) << item.ratio << ")\n";
             cout << "  Remaining capacity: " << remainingCapacity << "\n";
         } else {
-            // We can only take a fraction
             double fraction = remainingCapacity / item.weight;
             double valueGained = fraction * item.value;
             
@@ -94,7 +86,6 @@ KnapsackResult fractionalKnapsack(vector<Item> items, double capacity) {
 int main() {
     cout << "=== GREEDY ALGORITHM: FRACTIONAL KNAPSACK PROBLEM ===\n\n";
     
-    // EXAMPLE 1: Standard case
     cout << "EXAMPLE 1: Standard Fractional Knapsack\n";
     cout << "=========================================\n";
     
@@ -122,7 +113,6 @@ int main() {
     cout << "Total Weight Used: " << result1.totalWeight << " / " << capacity1 << "\n";
     cout << "Maximum Value: " << fixed << setprecision(2) << result1.maxValue << "\n";
     
-    // EXAMPLE 2: Another case with more items
     cout << "\n\n\nEXAMPLE 2: More Complex Case\n";
     cout << "=============================\n";
     
@@ -152,7 +142,6 @@ int main() {
     cout << "Total Weight Used: " << result2.totalWeight << " / " << capacity2 << "\n";
     cout << "Maximum Value: " << fixed << setprecision(2) << result2.maxValue << "\n";
     
-    // Key insights
     cout << "\n\n=== KEY INSIGHTS ===\n";
     cout << "1. TIME COMPLEXITY: O(n log n) - dominated by sorting\n";
     cout << "2. SPACE COMPLEXITY: O(n) - for storing items\n";
@@ -178,16 +167,3 @@ int main() {
     
     return 0;
 }
-
-/*
- * PRACTICE PROBLEMS:
- * 1. Modify to track which items are taken
- * 2. Compare greedy vs optimal for 0/1 knapsack
- * 3. Implement for negative weights/values
- * 
- * SIMILAR GREEDY PROBLEMS:
- * - Huffman Coding: Build optimal binary tree by merging lowest frequency nodes
- * - Job Sequencing: Schedule jobs by deadline to maximize profit
- * - Egyptian Fractions: Express 1 as sum of unit fractions greedily
- * - Minimum Coins: Make change using fewest coins (greedy doesn't always work!)
- */
