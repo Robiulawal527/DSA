@@ -1,1 +1,43 @@
+.vscode/
+
+# macOS
+.DS_Store
+
+# C/C++ build outputs
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
 *.exe
+*.out
+*.stackdump
+
+# Common debug/release binaries
+*/build/
+build/
+bin/
+debug/
+Debug/
+release/
+Release/
+
+# Clang/GCC/LLVM artifacts
+*.gcno
+*.gcda
+*.gcov
+*.profraw
+*.profdata
+
+# Xcode/LLDB dSYM bundles
+*.dSYM/
+
+# VSCode settings/workspace backups
+*.code-workspace
+
+# Generated files
+*.log
+*.tmp
+*.cache
